@@ -44,6 +44,7 @@ while playing:
             print("Player 1 wins!")
             break
 
+        #gameplay messages
         print(f"Player 1 drew the {player_1_card.rank} of {player_1_card.suit}!")
         print(f"Player 2 drew the {player_2_card.rank} of {player_2_card.suit}!")
 
