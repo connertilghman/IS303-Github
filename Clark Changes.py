@@ -1,1 +1,1 @@
-print("This is taking too long.")
+print("This is a test to see if it worked.")
