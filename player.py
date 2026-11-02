@@ -14,3 +14,14 @@ class Player():
     #adds the won cards back into the player's deck
     def add_won_cards(self, won_cards):
         self.deck.add_cards(won_cards)
+
+
+# I didn't realize it was 2 deck war and wrote this to split the deck and deal it --Isaac
+#create a fresh deck object and then splits it
+    #game_deck = Deck(full = True)
+    #game_deck.shuffle()
+    #for i, card in enumerate(game_deck.cards):
+        #if i % 2 == 0:
+            #player_1_deck.add_cards([card])
+        #else:
+            #player_2_deck.add_cards([card])

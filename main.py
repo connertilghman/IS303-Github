@@ -2,18 +2,18 @@
 from player import Player
 from cards import Deck
 
-playing = True
-
-print("Welcome to War!")
-input("Press 'Enter' to advance the round.")
-
 def get_card_count(player_1_deck, player_2_deck):
     player_1_card_count = len(player_1_deck.cards)
     player_2_card_count = len(player_2_deck.cards)
     print(f"Player 1 has {player_1_card_count} cards. Player 2 has {player_2_card_count} cards.")
 
-
 #game loop
+
+playing = True
+
+print("Welcome to War!")
+input("Press 'Enter' to advance the round.")
+
 while playing:
 
     #creates player decks and shuffles them
@@ -21,16 +21,6 @@ while playing:
     player_1_deck.shuffle()
     player_2_deck = Deck(full=True)
     player_2_deck.shuffle()
-
-        # I didn't realize it was 2 deck war and wrote this to split the deck and deal it --Isaac
-    #create a fresh deck object and then splits it
-    #game_deck = Deck(full = True)
-    #game_deck.shuffle()
-    #for i, card in enumerate(game_deck.cards):
-        #if i % 2 == 0:
-            #player_1_deck.add_cards([card])
-        #else:
-            #player_2_deck.add_cards([card])
 
     game_running = True
 
@@ -46,10 +36,10 @@ while playing:
         player_2_card = player_2.player_turn()
 
         if player_1_card is None:
-            print("Player 2 wins!")
+            print("Player 2 wins the game!")
             break
         elif player_2_card is None:
-            print("Player 1 wins!")
+            print("Player 1 wins the game!")
             break
 
         #gameplay messages
@@ -60,17 +50,23 @@ while playing:
         if player_1_card.value > player_2_card.value:
             cards_in_play.append(player_1_card)
             cards_in_play.append(player_2_card)
+
             print("Player 1 wins the round!\n")
             player_1.add_won_cards(cards_in_play)
-            get_card_count(player_1_deck, player_2_deck)
             cards_in_play.clear()
+
+            get_card_count(player_1_deck, player_2_deck)
+            
         elif player_2_card.value > player_1_card.value:
             cards_in_play.append(player_2_card)
             cards_in_play.append(player_1_card)
+
             print("Player 2 wins the round!\n")
             player_2.add_won_cards(cards_in_play)
-            get_card_count(player_1_deck, player_2_deck)
             cards_in_play.clear()
+
+            get_card_count(player_1_deck, player_2_deck)
+            
         else:
             cards_in_play.append(player_1_card)
             cards_in_play.append(player_2_card)
