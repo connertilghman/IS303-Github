@@ -1,11 +1,19 @@
+#imports and functions
 from player import Player
-from cards import Card, Deck
+from cards import Deck
 
 playing = True
 
 print("Welcome to War!")
-print("Press 'Enter' to advance the round.")
+input("Press 'Enter' to advance the round.")
 
+def get_card_count(player_1_deck, player_2_deck):
+    player_1_card_count = len(player_1_deck.cards)
+    player_2_card_count = len(player_2_deck.cards)
+    print(f"Player 1 has {player_1_card_count} cards. Player 2 has {player_2_card_count} cards.")
+
+
+#game loop
 while playing:
 
     #creates player decks and shuffles them
@@ -52,14 +60,16 @@ while playing:
         if player_1_card.value > player_2_card.value:
             cards_in_play.append(player_1_card)
             cards_in_play.append(player_2_card)
-            print("Player 1 wins the round!")
+            print("Player 1 wins the round!\n")
             player_1.add_won_cards(cards_in_play)
+            get_card_count(player_1_deck, player_2_deck)
             cards_in_play.clear()
         elif player_2_card.value > player_1_card.value:
             cards_in_play.append(player_2_card)
             cards_in_play.append(player_1_card)
-            print("Player 2 wins the round!")
+            print("Player 2 wins the round!\n")
             player_2.add_won_cards(cards_in_play)
+            get_card_count(player_1_deck, player_2_deck)
             cards_in_play.clear()
         else:
             cards_in_play.append(player_1_card)
@@ -71,7 +81,7 @@ while playing:
         # it's probably not worth validating. So this just acts as a pause.
         user_input = input("")
 
-    user_play_again = input("Would you like to play again? [Y/n]").strip()
-    if not (user_play_again.lower() == "y" or len(user_play_again) == 0):
+    user_play_again = input("Press 'y' to play again, else press any key to quit.").strip()
+    if not (user_play_again.lower() == "y"):
         print("Thanks for playing!")
         break
