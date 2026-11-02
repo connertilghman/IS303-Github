@@ -35,10 +35,16 @@ while playing:
         player_1_card = player_1.player_turn()
         player_2_card = player_2.player_turn()
 
-        if player_1_card is None:
+        #winner evaluation
+        if (player_1_card is None) and (player_2_card is None):
+            print("You beat the odds. This game ends in a draw.")
+            break
+        elif player_1_card is None:
+            player_2_deck.add_won_cards(cards_in_play)
             print("Player 2 wins the game!")
             break
         elif player_2_card is None:
+            player_1_deck.add_won_cards(cards_in_play)
             print("Player 1 wins the game!")
             break
 
