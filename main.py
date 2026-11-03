@@ -81,7 +81,7 @@ while playing:
         # it's probably not worth validating. So this just acts as a pause.
         user_input = input("")
 
-    user_play_again = input("Press 'y' to play again, else press any key to quit.").strip()
+    user_play_again = input("Press 'y' to play again, else enter any key to quit.").strip()
     if not (user_play_again.lower() == "y"):
         print("Thanks for playing!")
         break
